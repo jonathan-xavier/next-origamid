@@ -1,3 +1,4 @@
+import ServerFetch from "@/components/server-fetch";
 
 export default async function Home() {
   
@@ -5,6 +6,7 @@ export default async function Home() {
       <main>
         <h1>Homesdss</h1> 
         {/* <Acesso/>        */}
+        <ServerFetch/>
       </main>
   );
 }
