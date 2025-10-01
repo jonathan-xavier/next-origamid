@@ -9,8 +9,6 @@ type IProduct = {
 
 export default function ClientFetch() {
 
-    
-
     const [data, setData] = useState<IProduct[]>([])
 
     useEffect(() => {

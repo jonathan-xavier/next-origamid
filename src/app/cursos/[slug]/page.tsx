@@ -1,5 +1,4 @@
-import { fetchCurso } from "@/api/cursos"
-import AulaClient from "@/components/aula-client"
+import CursoClient from "@/components/curso-client"
 
 type IParams = {
     params: {
@@ -8,10 +7,10 @@ type IParams = {
 }
 
 export default async function CursoSlugPage({ params }: IParams) {
-   
+    const { slug } = await params
     return (
         <main>
-            <AulaClient nome={params.slug}/>
+            <CursoClient nome={slug}/>
         </main>
     )
 }

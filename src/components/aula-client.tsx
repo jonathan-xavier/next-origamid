@@ -1,7 +1,11 @@
 "use client"
 
-import { fetchCurso } from "@/api/cursos"
+import { fetchAula } from "@/api/cursos"
 import { useEffect, useState } from "react"
+
+type IAulaType = {
+    data: string[]
+}
 
 
 type ICurso = {
@@ -24,33 +28,20 @@ type IAulas = {
     tempo: number,
 }
 
-type AulaType = {
-    nome: string
-}
-
-export default function AulaClient({ nome }: AulaType) {
-    const [data, setData] = useState<ICurso | undefined>()
+export default function AulaClient({data}: IAulaType) {
+    console.log("aulassss: ", data)
+    const [curso, aula] = data
+    const [res, setRes] = useState<ICurso | null>()
 
     useEffect(() => {
         (async () => {
-
-            const result = await fetchCurso(nome)
-            if (result) {
-                setData(result)
-            }
+            const result = await fetchAula(curso, aula)
+            setRes(result)
         })()
     }, [])
-
-    return (
+    return(
         <main>
-            <h2>{data?.nome}</h2>
-            <span>{data?.descricao}</span> <br />
-            <ul>{data?.aulas.map(item => (
-                <li key={`${item.curso_id}_${item.ordem}`}>{item.nome}</li>
-            ))}</ul>
-            <span>Total de aulas: {data?.total_aulas}</span>
-            <span>Total de horas: {data?.total_horas}</span> <br />
+        
         </main>
-
     )
 }
