@@ -22,6 +22,14 @@ type IAulas = {
 
 //criar interface
 
+type IAula = {
+    id: number,
+    slug: string,
+    nome: string,
+    curso_id: number,
+    tempo: number,
+    ordem: number,
+}
 // {
 //   "id": 1,
 //   "slug": "introducao-ao-html",
@@ -45,14 +53,14 @@ const fetchCurso = async (curso: string): Promise<ICurso | null> => {
     }
 }
 
-const fetchAula = async (curso: string, aula: string): Promise<ICurso | null> => {
+const fetchAula = async (curso: string, aula: string): Promise<IAula | null> => {
     if(!curso && !aula){
         return null
     }
 
     try {
         const response = await fetch(`https://api.origamid.online/cursos/${curso}/${aula}`)
-        const data = await response.json() as ICurso
+        const data = await response.json() as IAula
         return data
     } catch (error) {
         console.error(error)

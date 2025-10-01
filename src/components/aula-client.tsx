@@ -7,31 +7,19 @@ type IAulaType = {
     data: string[]
 }
 
-
-type ICurso = {
-    id: string,
-    slug: string,
-    nome: string,
-    descricao: string,
-    total_aulas: number,
-    total_horas: number,
-    aulas: IAulas[],
-}
-
-type IAulas = {
-    curso_id: number,
-    descricao: string,
+type IAula = {
     id: number,
-    nome: string,
-    ordem: number,
     slug: string,
+    nome: string,
+    curso_id: number,
     tempo: number,
+    ordem: number,
 }
 
 export default function AulaClient({data}: IAulaType) {
     console.log("aulassss: ", data)
     const [curso, aula] = data
-    const [res, setRes] = useState<ICurso | null>()
+    const [res, setRes] = useState<IAula | null>()
 
     useEffect(() => {
         (async () => {
@@ -41,7 +29,7 @@ export default function AulaClient({data}: IAulaType) {
     }, [])
     return(
         <main>
-        
+            <span>{res?.nome}</span>
         </main>
     )
 }
