@@ -63,6 +63,7 @@ const fetchAula = async (curso: string, aula: string): Promise<IAula | null> => 
         const data = await response.json() as IAula
         return data
     } catch (error) {
+        //comment
         console.error(error)
         return null
     }
